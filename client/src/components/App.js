@@ -10,7 +10,7 @@ const surveyNew = () => <h2>surveyNew</h2>
 
 const App = () => {
    return (
-      <div>
+      <div className="container">
         <BrowserRouter>
            <div>
              <Header/>
