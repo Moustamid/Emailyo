@@ -9,9 +9,9 @@ import * as actions from '../actions';
 
 // Components :
 import Header from './Header';
-const Landing = () => <h2>Landing</h2>
-const Dashbord = () => <h2>Dashbord</h2>
-const surveyNew = () => <h2>surveyNew</h2>
+import Landing from './Landing';
+const Dashbord = () => <h2>Dashbord</h2>;
+const surveyNew = () => <h2>surveyNew</h2>;
 
 
 class App extends Component {

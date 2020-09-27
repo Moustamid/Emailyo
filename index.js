@@ -9,7 +9,8 @@ require('./services/passport');
 mongoose.connect(keys.mongoURI);
 
 const app = express();
-// middlewares : 
+
+// middlewares Starts: 
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -18,6 +19,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+// middlewares End : 
 
 require('./routes/authRoutes')(app);
 

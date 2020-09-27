@@ -8,12 +8,22 @@ module.exports = app => {
     })
   );
 
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  //  passport authenticate Middleware :
+  app.get(
+    '/auth/google/callback', 
+     passport.authenticate('google') ,
+     (req , res) => {
+       // redirect : 
+        res.redirect('/surveys');
+     }
+  );
   
   app.get('/api/logout' , (req, res) => {
-    // kills automaticaly the id inside the cookie (AKI:user)
+    // kills automaticaly the id (Token) inside the cookie (AKI:user)
      req.logout();
-     res.send(req.user);
+    // redirect : 
+     res.redirect('/');
+
   } );
 
   app.get('/api/current_user', (req, res) => {
