@@ -1,5 +1,6 @@
 export default function( state = {} , action ) {
     
+    console.log('Action called:', action);
 
    switch(action.type) {
     
@@ -8,3 +9,10 @@ export default function( state = {} , action ) {
    }
    
 }
+
+
+/*
+ Note : 
+ !! every reducer check the actions he recives automaticaly and updates
+
+*/ 
