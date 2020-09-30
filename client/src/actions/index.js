@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {FETCH_USER} from './types';
 
+// Fetch user Model from the Database :
 
 export const fetchUser = () => async dispatch => {
 
@@ -9,12 +10,31 @@ export const fetchUser = () => async dispatch => {
 
 };
 
+// Send Strip Token to the BackEnd Api  :
+
+/* # Token : is the object we got back from the Strip API */  
+export const handToke = (Token) => async dispatch => {
+
+   const res = await axios.post('/api/stripe' , Token );
+   dispatch({ type: FETCH_USER , payload: res.data}) ;
+   
+} ;
+
+
+
+
+
+
+
+
+
+
 
 
 /*
  Note : Async Actions 
 
- # axios : help usfetch data in React
+ # axios : help us fetch data in React
  
  # reduxThunk Middleware : 
   checck if we return a function or a {type , payload } object .

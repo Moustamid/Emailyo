@@ -3,6 +3,10 @@ import React , {Component} from 'react';
 import  {connect} from 'react-redux';
 // Route : 
 import {Link} from 'react-router-dom';
+// Components :
+import Payments from './Payements';
+
+
 
 class Header extends Component {
 
@@ -17,10 +21,16 @@ class Header extends Component {
             return  <li><a href="/auth/google">Login With Google</a></li>;
 
           default:
-            return  <li><a href="/api/logout">Login out</a></li>;
+            return [
+              <li key="1"><Payments/></li> ,
+              <li key="3" style={{margin: '0 10px'}}> 
+              Credits: {this.props.auth.credits} 
+              </li> ,
+              <li key="2"><a href="/api/logout">Login out</a></li>
+            ];
             // Note : 
            // Update the logout flow to using : Ajax request & Redux , 
-          //  not Http link logout to our Express server. 
+          //  not Http link logout to our Express server (Refreching the page). 
        }
 
     }
@@ -34,11 +44,12 @@ class Header extends Component {
               <Link 
               to={this.props.auth ? '/surveys' : '/'} 
               className="left brand-logo"
+              style={{margin: '0 10px'}}
               >
               Emailyo
               </Link>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li><a href="#">{this.renderContent()}</a></li>
+                  {this.renderContent()}
               </ul>
             </div>
           </nav>
