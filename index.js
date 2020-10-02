@@ -32,6 +32,28 @@ app.use(passport.session());
 // Routes :
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+ /* Clients side Routing for the Production . */
+if(process.env.NODE_ENV === 'production') {
+  
+   /*
+    # Route 3 :
+    Express will (search) serve up production assets .
+    like our main.js file or main.css file ! ,
+    for any request it does not recognize . 
+    it serve the assets in the build derectory .
+   */
+    app.use(express.static('client/build'));
+   /*
+    # Route 4 : Absolute Catsh all in our App :
+    Express will serve up the index.html file , 
+    if it does not recognize the Route .
+   */ 
+    const path = require('path');
+    app.get('*' , (req , res) => {
+      res.sendFile(  path.resolve( __dirname, 'client' , 'build' , 'index.html') );
+    } );
+
+}
 
 
 
